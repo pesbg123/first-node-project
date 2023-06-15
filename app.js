@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 
 const postsRouter = require('./routes/post.js');
+const commentsRouter = require('./routes/comment.js');
 
 const connect = require('./schemas');
 connect();
@@ -11,7 +12,7 @@ connect();
 app.use(express.json());
 
 // postsRouter를 '/' 경로에 적용
-app.use('/', [postsRouter]);
+app.use('/', [postsRouter, commentsRouter]);
 
 // 서버 시작
 app.listen(port, () => {
